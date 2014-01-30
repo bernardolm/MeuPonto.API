@@ -1,0 +1,7 @@
+packages/
+MeuPonto.DAL/bin/
+MeuPonto.DAL/obj/
+MeuPonto.Modelos/bin/
+MeuPonto.Modelos/obj/
+MeuPonto.Web/bin/
+MeuPonto.Web/obj/

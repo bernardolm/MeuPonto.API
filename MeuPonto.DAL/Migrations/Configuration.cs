@@ -1,10 +1,10 @@
 namespace MeuPonto.DAL.Migrations
 {
     using MeuPonto.Modelos;
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
+	using System;
+	using System.Data.Entity;
+	using System.Data.Entity.Migrations;
+	using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MeuPonto.DAL.Contexto>
     {
@@ -17,7 +17,7 @@ using System.Linq;
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data. E.g.
             //
             //    context.People.AddOrUpdate(

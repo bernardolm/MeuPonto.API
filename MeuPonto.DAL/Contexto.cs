@@ -1,4 +1,4 @@
-﻿using MeuPonto.Modelos;
+﻿using MeuPonto.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 

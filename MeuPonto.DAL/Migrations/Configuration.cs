@@ -1,6 +1,6 @@
 namespace MeuPonto.DAL.Migrations
 {
-    using MeuPonto.Modelos;
+    using MeuPonto.Models;
 	using System;
 	using System.Data.Entity;
 	using System.Data.Entity.Migrations;

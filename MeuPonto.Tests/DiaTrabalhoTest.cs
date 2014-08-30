@@ -8,15 +8,29 @@ namespace MeuPonto.Tests
 	[TestFixture]
 	public class DiaTrabalhoTest
     {
-		private int ano = DateTime.Now.Year;
-		private int mes = DateTime.Now.Month;
-		private int dia = DateTime.Now.Day;
+		int ano = 2014;
+		int mes = 8;
+		int dia = 25;
 		
 		[SetUp]
 		public void Init()
 		{
 		}
 
+		#region Dia 1
+
+		[Test]
+		public void LimiteDiurno()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[0].LimiteDiurno);
+		}
+
+		[Test]
+		public void LimiteNoturno()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[0].LimiteNoturno);
+		}
+		
 		[Test]
 		public void Intervalo()
 		{
@@ -36,12 +50,6 @@ namespace MeuPonto.Tests
 		}
 
 		[Test]
-		public void HorasNormaisTrabalhadas2()
-		{
-			Assert.AreEqual(new TimeSpan(20, 35, 0), MockValues.PeriodoTrabalho[1].HorasNormaisTrabalhadas);
-		}
-
-		[Test]
 		public void HorasNormaisDevidas()
 		{
 			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[0].HorasNormaisDevidas);
@@ -54,34 +62,202 @@ namespace MeuPonto.Tests
 		}
 
 		[Test]
-		public void HorasExtrasTrabalhadas2()
-		{
-			Assert.AreEqual(new TimeSpan(12, 35, 0), MockValues.PeriodoTrabalho[1].HorasExtrasTrabalhadas);
-		}
-
-		[Test]
 		public void HorasNoturnasTrabalhadas()
 		{
 			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[0].HorasNoturnasTrabalhadas);
 		}
 
 		[Test]
-		public void HorasNoturnasTrabalhadas2()
-		{
-			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[1].HorasNoturnasTrabalhadas);
-		}
-
-		[Test]
 		public void SaidaMinima()
 		{
-			Assert.AreEqual(new DateTime(ano, mes, dia, 19, 45, 00), MockValues.PeriodoTrabalho[0].SaidaMinima);
+			Assert.AreEqual(new DateTime(ano, mes, dia, 19, 45, 0), MockValues.PeriodoTrabalho[0].SaidaMinima);
+		}
+
+		#endregion Dia 1
+
+		#region Dia 2
+
+		[Test]
+		public void HorasNormaisTrabalhadas1()
+		{
+			Assert.AreEqual(new TimeSpan(15, 25, 0), MockValues.PeriodoTrabalho[1].HorasNormaisTrabalhadas);
 		}
 
 		[Test]
-		public void SaidaMinima2()
+		public void HorasNormaisDevidas1()
 		{
-			Assert.AreEqual(new DateTime(ano, mes, dia+1, 12, 45, 00), MockValues.PeriodoTrabalho[1].SaidaMinima);
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[1].HorasNormaisDevidas);
 		}
+
+		[Test]
+		public void HorasExtrasTrabalhadas1()
+		{
+			Assert.AreEqual(new TimeSpan(7, 25, 0), MockValues.PeriodoTrabalho[1].HorasExtrasTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNoturnasTrabalhadas1()
+		{
+			Assert.AreEqual(new TimeSpan(5, 5, 0), MockValues.PeriodoTrabalho[1].HorasNoturnasTrabalhadas);
+		}
+
+		[Test]
+		public void SaidaMinima1()
+		{
+			Assert.AreEqual(new DateTime(ano, mes, dia + 1, 12, 45, 0), MockValues.PeriodoTrabalho[1].SaidaMinima);
+		}
+
+		#endregion Dia 2
+
+		#region Dia 3
+
+		[Test]
+		public void IntervaloExtra3()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[2].IntervaloExtra);
+		}
+
+		[Test]
+		public void HorasNormaisTrabalhadas3()
+		{
+			Assert.AreEqual(new TimeSpan(4, 10, 0), MockValues.PeriodoTrabalho[2].HorasNormaisTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNormaisDevidas3()
+		{
+			Assert.AreEqual(new TimeSpan(3, 50, 0), MockValues.PeriodoTrabalho[2].HorasNormaisDevidas);
+		}
+
+		[Test]
+		public void HorasExtrasTrabalhadas3()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[2].HorasExtrasTrabalhadas);
+		}
+
+		[Test]
+		public void SaidaMinima3()
+		{
+			Assert.AreEqual(new DateTime(ano, mes, dia+2, 18, 5, 0), MockValues.PeriodoTrabalho[2].SaidaMinima);
+		}
+
+		#endregion Dia 3
+
+		#region Dia 4
+
+		[Test]
+		public void LimiteDiurno4()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[3].LimiteDiurno);
+		}
+
+		[Test]
+		public void LimiteNoturno4()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[3].LimiteNoturno);
+		}
+
+		[Test]
+		public void Intervalo4()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[3].Intervalo);
+		}
+
+		[Test]
+		public void IntervaloExtra4()
+		{
+			Assert.AreEqual(new TimeSpan(0, 25, 0), MockValues.PeriodoTrabalho[3].IntervaloExtra);
+		}
+
+		[Test]
+		public void HorasNormaisTrabalhadas4()
+		{
+			Assert.AreEqual(new TimeSpan(8, 31, 0), MockValues.PeriodoTrabalho[3].HorasNormaisTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNormaisDevidas4()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[3].HorasNormaisDevidas);
+		}
+
+		[Test]
+		public void HorasExtrasTrabalhadas4()
+		{
+			Assert.AreEqual(new TimeSpan(0, 31, 0), MockValues.PeriodoTrabalho[3].HorasExtrasTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNoturnasTrabalhadas4()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[3].HorasNoturnasTrabalhadas);
+		}
+
+		[Test]
+		public void SaidaMinima4()
+		{
+			Assert.AreEqual(new DateTime(ano, mes, dia, 19, 45, 0), MockValues.PeriodoTrabalho[3].SaidaMinima);
+		}
+
+		#endregion Dia 4
+
+		#region Dia 5
+
+		[Test]
+		public void LimiteDiurno5()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[4].LimiteDiurno);
+		}
+
+		[Test]
+		public void LimiteNoturno5()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[4].LimiteNoturno);
+		}
+
+		[Test]
+		public void Intervalo5()
+		{
+			Assert.AreEqual(new TimeSpan(1, 10, 0), MockValues.PeriodoTrabalho[4].Intervalo);
+		}
+
+		[Test]
+		public void IntervaloExtra5()
+		{
+			Assert.AreEqual(new TimeSpan(0, 25, 0), MockValues.PeriodoTrabalho[4].IntervaloExtra);
+		}
+
+		[Test]
+		public void HorasNormaisTrabalhadas5()
+		{
+			Assert.AreEqual(new TimeSpan(8, 31, 0), MockValues.PeriodoTrabalho[4].HorasNormaisTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNormaisDevidas5()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[4].HorasNormaisDevidas);
+		}
+
+		[Test]
+		public void HorasExtrasTrabalhadas5()
+		{
+			Assert.AreEqual(new TimeSpan(0, 31, 0), MockValues.PeriodoTrabalho[4].HorasExtrasTrabalhadas);
+		}
+
+		[Test]
+		public void HorasNoturnasTrabalhadas5()
+		{
+			Assert.AreEqual(new TimeSpan(0, 0, 0), MockValues.PeriodoTrabalho[4].HorasNoturnasTrabalhadas);
+		}
+
+		[Test]
+		public void SaidaMinima5()
+		{
+			Assert.AreEqual(new DateTime(ano, mes, dia, 19, 45, 0), MockValues.PeriodoTrabalho[4].SaidaMinima);
+		}
+
+		#endregion Dia 5
 
 		public static class MockValues
 		{
@@ -89,27 +265,41 @@ namespace MeuPonto.Tests
 			{
 				get
 				{
-					int ano = DateTime.Now.Year;
-					int mes = DateTime.Now.Month;
-					int dia = DateTime.Now.Day;
+					int ano = 2014;
+					int mes = 8;
+					int dia = 25;
 
 					return new List<DiaTrabalho>
 					{
 						new DiaTrabalho {
-							Entrada = new System.DateTime(ano, mes, dia, 10, 10, 00),
-							IntervaloSaida = new System.DateTime(ano, mes, dia, 13, 10, 00),
-							IntervaloRetorno = new System.DateTime(ano, mes, dia, 14, 20, 00),
-							IntervaloExtraSaida = new System.DateTime(ano, mes, dia, 18, 30, 00),
-							IntervaloExtraRetorno = new System.DateTime(ano, mes, dia, 18, 55, 00),
-							Saida = new System.DateTime(ano, mes, dia, 20, 16, 00)
+							Entrada = new System.DateTime(ano, mes, dia, 10, 10, 0),
+							IntervaloSaida = new System.DateTime(ano, mes, dia, 13, 10, 0),
+							IntervaloRetorno = new System.DateTime(ano, mes, dia, 14, 20, 0),
+							IntervaloExtraSaida = new System.DateTime(ano, mes, dia, 18, 30, 0),
+							IntervaloExtraRetorno = new System.DateTime(ano, mes, dia, 18, 55, 0),
+							Saida = new System.DateTime(ano, mes, dia, 20, 16, 0)
 						},
 						new DiaTrabalho {
-							Entrada = new System.DateTime(ano, mes, dia+1, 3, 10, 00),
-							IntervaloSaida = new System.DateTime(ano, mes, dia+1, 13, 10, 00),
-							IntervaloRetorno = new System.DateTime(ano, mes, dia+1, 14, 20, 00),
-							IntervaloExtraSaida = new System.DateTime(ano, mes, dia+1, 18, 30, 00),
-							IntervaloExtraRetorno = new System.DateTime(ano, mes, dia+1, 18, 55, 00),
-							Saida = new System.DateTime(ano, mes, dia+2, 1, 15, 00)
+							Entrada = new System.DateTime(ano, mes, dia+1, 3, 10, 0),
+							IntervaloSaida = new System.DateTime(ano, mes, dia+1, 13, 10, 0),
+							IntervaloRetorno = new System.DateTime(ano, mes, dia+1, 14, 20, 0),
+							IntervaloExtraSaida = new System.DateTime(ano, mes, dia+1, 18, 30, 0),
+							IntervaloExtraRetorno = new System.DateTime(ano, mes, dia+1, 18, 55, 0),
+							Saida = new System.DateTime(ano, mes, dia+2, 1, 15, 0)
+						},
+						new DiaTrabalho {
+							Entrada = new System.DateTime(ano, mes, dia+2, 9, 0, 0),
+							IntervaloSaida = new System.DateTime(ano, mes, dia+2, 12, 0, 0),
+							IntervaloRetorno = new System.DateTime(ano, mes, dia+2, 13, 5, 0),
+							Saida = new System.DateTime(ano, mes, dia+2, 14, 15, 0)
+						},
+						new DiaTrabalho {
+							Entrada = new System.DateTime(ano, mes, dia+3, 14, 0, 0),
+							Saida = new System.DateTime(ano, mes, dia+3, 22, 22, 0)
+						},
+						new DiaTrabalho {
+							Entrada = new System.DateTime(ano, mes, dia+4, 15, 15, 0),
+							Saida = new System.DateTime(ano, mes, dia+5, 2, 22, 0)
 						}
 					};
 				}

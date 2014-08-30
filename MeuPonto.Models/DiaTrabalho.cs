@@ -6,9 +6,7 @@ namespace MeuPonto.Models
 	public class DiaTrabalho
 	{
 		private readonly TimeSpan HorasATrabalharEmUmDia = new TimeSpan(8, 0, 0);
-		private readonly DateTime limiteDiurno = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 5, 0, 0);
-		private DateTime limiteNoturno = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 22, 0, 0);
-
+		
 		public int Id { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:HH:mm}")]
@@ -37,12 +35,38 @@ namespace MeuPonto.Models
 		[Display(Name = "Observação")]
 		public String Observacao { get; set; }
 
+		[DisplayFormat(DataFormatString = "{0:HH:mm}")]
+		[Display(Name = "Limite diurno")]
+		public DateTime LimiteDiurno
+		{
+			get
+			{
+				if (this.Entrada == DateTime.MinValue)
+					return new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 5, 0, 0);
+				else
+					return new DateTime(Entrada.Year, Entrada.Month, Entrada.Day, 5, 0, 0);
+			}
+		}
+
+		[DisplayFormat(DataFormatString = "{0:HH:mm}")]
+		[Display(Name = "Limite noturno")]
+		public DateTime LimiteNoturno
+		{
+			get
+			{
+				if (this.Entrada == DateTime.MinValue)
+					return new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 22, 0, 0);
+				else
+					return new DateTime(Entrada.Year, Entrada.Month, Entrada.Day, 22, 0, 0);
+			}
+		}
+
 		[DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
 		public TimeSpan Intervalo
 		{
 			get
 			{
-				return (IntervaloSaida - IntervaloRetorno).Duration();
+				return IntervaloSaida.Subtract(IntervaloRetorno).Duration();
 			}
 		}
 
@@ -52,7 +76,7 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				return (IntervaloExtraSaida - IntervaloExtraRetorno).Duration();
+				return IntervaloExtraSaida.Subtract(IntervaloExtraRetorno).Duration();
 			}
 		}
 
@@ -62,9 +86,9 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				var entrada = Entrada < limiteDiurno ? limiteDiurno : Entrada;
-				var saida = Saida > limiteNoturno ? limiteDiurno : Saida;
-				return (saida - entrada).Duration().Subtract(Intervalo).Subtract(IntervaloExtra);
+				var entrada = Entrada < LimiteDiurno ? LimiteDiurno : Entrada;
+				var saida = Saida > LimiteNoturno ? LimiteNoturno : Saida;
+				return saida.Subtract(entrada).Subtract(Intervalo).Subtract(IntervaloExtra);
 			}
 		}
 
@@ -74,8 +98,8 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				if (HorasNormaisTrabalhadas - HorasATrabalharEmUmDia < new TimeSpan(0, 0, 0))
-					return HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia);
+				if (HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) < new TimeSpan(0, 0, 0))
+					return HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia).Duration();
 				else
 					return new TimeSpan(0, 0, 0);
 			}
@@ -87,7 +111,10 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				return HorasNormaisTrabalhadas - HorasATrabalharEmUmDia;
+				if (HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) > new TimeSpan(0, 0, 0))
+					return HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia);
+				else
+					return new TimeSpan(0, 0, 0);
 			}
 		}
 
@@ -98,13 +125,13 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				TimeSpan total = new TimeSpan();
+				TimeSpan total = new TimeSpan(0, 0, 0);
 
-				if (Entrada < limiteDiurno)
-					total += Entrada.Subtract(limiteDiurno);
+				if (Entrada < LimiteDiurno)
+					total += LimiteDiurno.Subtract(Entrada);
 
-				if (Saida > limiteNoturno)
-					total += limiteNoturno.Subtract(Saida);
+				if (Saida > LimiteNoturno)
+					total += Saida.Subtract(LimiteNoturno);
 
 				return total;
 			}
@@ -116,7 +143,7 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				return Entrada.Add(HorasATrabalharEmUmDia + Intervalo + IntervaloExtra);
+				return Entrada.Add(HorasATrabalharEmUmDia).Add(Intervalo).Add(IntervaloExtra);
 			}
 		}
 	}

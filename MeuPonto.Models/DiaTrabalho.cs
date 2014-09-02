@@ -81,7 +81,7 @@ namespace MeuPonto.Models
 		}
 
 		[DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
-		[Display(Name = "Horas normais")]
+		[Display(Name = "Horas não noturnas trabalhadas no dio")]
 		public TimeSpan HorasNormaisTrabalhadas
 		{
 			get
@@ -98,21 +98,29 @@ namespace MeuPonto.Models
 		{
 			get
 			{
-				if (HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) < new TimeSpan(0, 0, 0))
-					return HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia).Duration();
+				var entrada = Entrada < LimiteDiurno ? LimiteDiurno : Entrada;
+				var saida = Saida > LimiteNoturno ? LimiteNoturno : Saida;
+				var horasNormaisTrabalhadas = saida.Subtract(entrada).Subtract(Intervalo).Subtract(IntervaloExtra);
+
+				if (horasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) < new TimeSpan(0, 0, 0))
+					return horasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia).Duration();
 				else
 					return new TimeSpan(0, 0, 0);
 			}
 		}
 
 		[DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
-		[Display(Name = "Horas extras")]
+		[Display(Name = "Horas não noturnas trabalhadas além da jornada diária normal")]
 		public TimeSpan HorasExtrasTrabalhadas
 		{
 			get
 			{
-				if (HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) > new TimeSpan(0, 0, 0))
-					return HorasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia);
+				var entrada = Entrada < LimiteDiurno ? LimiteDiurno : Entrada;
+				var saida = Saida > LimiteNoturno ? LimiteNoturno : Saida;
+				var horasNormaisTrabalhadas = saida.Subtract(entrada).Subtract(Intervalo).Subtract(IntervaloExtra);
+
+				if (horasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia) > new TimeSpan(0, 0, 0))
+					return horasNormaisTrabalhadas.Subtract(HorasATrabalharEmUmDia);
 				else
 					return new TimeSpan(0, 0, 0);
 			}

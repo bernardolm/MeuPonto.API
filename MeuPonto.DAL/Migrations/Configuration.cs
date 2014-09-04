@@ -28,27 +28,47 @@ namespace MeuPonto.DAL.Migrations
             //    );
             //
 
+			int ano = 2014;
+			int mes = 8;
+			int dia = 25;
+
 			context.DiasTrabalho.AddOrUpdate(new DiaTrabalho() {
-				Entrada = new DateTime(2014, 1, 1, 8, 32, 21),
-				IntervaloSaida = new DateTime(2014, 1, 1, 12, 16, 21),
-				IntervaloRetorno = new DateTime(2014, 1, 1, 13, 22, 21),
-				Saida = new DateTime(2014, 1, 1, 17, 47, 21),
+				Entrada = new DateTime(ano, mes, dia, 10, 10, 0),
+				IntervaloSaida = new DateTime(ano, mes, dia, 13, 10, 0),
+				IntervaloRetorno = new DateTime(ano, mes, dia, 14, 20, 0),
+				IntervaloExtraSaida = new DateTime(ano, mes, dia, 18, 30, 0),
+				IntervaloExtraRetorno = new DateTime(ano, mes, dia, 18, 55, 0),
+				Saida = new DateTime(ano, mes, dia, 20, 16, 0)
 			});
 
 			context.DiasTrabalho.AddOrUpdate(new DiaTrabalho()
 			{
-				Entrada = new DateTime(2014, 1, 2, 10, 19, 21),
-				IntervaloSaida = new DateTime(2014, 1, 2, 14, 04, 21),
-				IntervaloRetorno = new DateTime(2014, 1, 2, 15, 01, 21),
-				Saida = new DateTime(2014, 1, 2, 18, 49, 21),
+				Entrada = new DateTime(ano, mes, dia + 1, 3, 10, 0),
+				IntervaloSaida = new DateTime(ano, mes, dia + 1, 12, 48, 0),
+				IntervaloRetorno = new DateTime(ano, mes, dia + 1, 14, 20, 0),
+				IntervaloExtraSaida = new DateTime(ano, mes, dia + 1, 18, 30, 0),
+				IntervaloExtraRetorno = new DateTime(ano, mes, dia + 1, 19, 3, 0),
+				Saida = new DateTime(ano, mes, dia + 2, 1, 15, 0)
 			});
 
 			context.DiasTrabalho.AddOrUpdate(new DiaTrabalho()
 			{
-				Entrada = new DateTime(2014, 1, 3, 3, 59, 0),
-				IntervaloSaida = new DateTime(2014, 1, 3, 12, 0, 0),
-				IntervaloRetorno = new DateTime(2014, 1, 3, 13, 00, 00),
-				Saida = new DateTime(2014, 1, 3, 23, 59, 00),
+				Entrada = new DateTime(ano, mes, dia + 2, 9, 0, 0),
+				IntervaloSaida = new DateTime(ano, mes, dia + 2, 12, 0, 0),
+				IntervaloRetorno = new DateTime(ano, mes, dia + 2, 13, 5, 0),
+				Saida = new DateTime(ano, mes, dia + 2, 14, 15, 0)
+			});
+
+			context.DiasTrabalho.AddOrUpdate(new DiaTrabalho()
+			{
+				Entrada = new DateTime(ano, mes, dia + 3, 14, 0, 0),
+				Saida = new DateTime(ano, mes, dia + 3, 22, 22, 0)
+			});
+
+			context.DiasTrabalho.AddOrUpdate(new DiaTrabalho()
+			{
+				Entrada = new DateTime(ano, mes, dia + 4, 15, 15, 0),
+				Saida = new DateTime(ano, mes, dia + 5, 2, 22, 0)
 			});
 
 			context.SaveChanges();

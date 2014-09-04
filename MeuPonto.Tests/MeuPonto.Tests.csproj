@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiaTrabalhoTest.cs" />
+    <Compile Include="MockValues.cs" />
+    <Compile Include="PeriodoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

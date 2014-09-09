@@ -14,37 +14,46 @@ namespace MeuPonto.DAL
 		{
 			modelBuilder.Entity<DiaTrabalho>()
 				.HasKey(c => c.Id)
-				.Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+				.Property(c => c.Id)
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 	
 			modelBuilder.Entity<DiaTrabalho>()
 				.ToTable("DiasTrabalho");
 			
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.Entrada).HasColumnType("DateTime2").IsOptional();
+				.Property(c => c.Entrada)
+				.HasColumnType("DateTime2")
+				.IsRequired();
 
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.IntervaloSaida).HasColumnType("DateTime2").IsOptional(); 
+				.Property(c => c.IntervaloSaida)
+				.HasColumnType("DateTime2")
+				.IsOptional(); 
 			
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.IntervaloRetorno).HasColumnType("DateTime2").IsOptional();
+				.Property(c => c.IntervaloRetorno)
+				.HasColumnType("DateTime2")
+				.IsOptional();
 
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.IntervaloExtraSaida).HasColumnType("DateTime2").IsOptional();
+				.Property(c => c.IntervaloExtraSaida)
+				.HasColumnType("DateTime2")
+				.IsOptional();
 	
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.IntervaloExtraRetorno).HasColumnType("DateTime2").IsOptional();
+				.Property(c => c.IntervaloExtraRetorno)
+				.HasColumnType("DateTime2")
+				.IsOptional();
 
 			modelBuilder.Entity<DiaTrabalho>()
-				.Property(c => c.Saida).HasColumnType("DateTime2").IsOptional();
+				.Property(c => c.Saida)
+				.HasColumnType("DateTime2")
+				.IsRequired();
 
-			//modelBuilder.Entity<DiaTrabalho>()
-			//	.Ignore(c => c.Intervalo);
-
-			//modelBuilder.Entity<DiaTrabalho>()
-			//	.Ignore(c => c.HorasNormaisTrabalhadas);
-
-			//modelBuilder.Entity<DiaTrabalho>()
-			//	.Ignore(c => c.IntervaloExtra);
+			modelBuilder.Entity<DiaTrabalho>()
+				.Property(c => c.Observacao)
+				.HasMaxLength(300)
+				.IsOptional();
 
 			base.OnModelCreating(modelBuilder);
 		}

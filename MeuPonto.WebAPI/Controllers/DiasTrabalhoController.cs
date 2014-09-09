@@ -11,7 +11,7 @@ using MeuPonto.DAL;
 
 namespace MeuPonto.WebAPI.Controllers
 {
-	public class DiasController : Controller
+	public class DiasTrabalhoController : Controller
 	{
 		private Contexto db = new Contexto();
 

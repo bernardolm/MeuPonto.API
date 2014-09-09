@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MeuPonto.Models;
+using NUnit.Framework;
 using System;
 
 namespace MeuPonto.Tests

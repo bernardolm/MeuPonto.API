@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MeuPonto.Tests
+namespace MeuPonto.Models
 {
 	public static class MockValues
 	{

@@ -1,12 +1,9 @@
-namespace MeuPonto.DAL.Migrations
+namespace MeuPonto.DAL
 {
     using MeuPonto.Models;
-	using System;
-	using System.Data.Entity;
 	using System.Data.Entity.Migrations;
-	using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MeuPonto.DAL.Contexto>
+	internal sealed class Configuration : DbMigrationsConfiguration<MeuPonto.DAL.Contexto>
     {
         public Configuration()
         {

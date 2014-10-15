@@ -61,7 +61,7 @@
     <Compile Include="Migrations\201410150455512_Initial.Designer.cs">
       <DependentUpon>201410150455512_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

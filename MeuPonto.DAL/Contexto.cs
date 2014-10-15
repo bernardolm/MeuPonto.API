@@ -14,6 +14,8 @@ namespace MeuPonto.DAL
 		
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
+			Database.SetInitializer<Contexto>(new CreateDatabaseIfNotExists<Contexto>());
+
 			modelBuilder.Conventions.Remove();
 
 			modelBuilder.Entity<DiaTrabalho>()

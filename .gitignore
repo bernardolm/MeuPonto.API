@@ -3,7 +3,7 @@
 *.bak
 [Aa]pp.config
 [Ww]eb.config
-[Ww]eb.[Dd]ebug.config
+
 
 # Windows image file caches
 Thumbs.db

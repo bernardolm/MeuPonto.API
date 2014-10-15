@@ -56,12 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\DiaTrabalhoConfiguration.cs" />
+    <Compile Include="Configurations\PeriodoConfiguration.cs" />
     <Compile Include="Contexto.cs" />
-    <Compile Include="Migrations\201410150455512_Initial.cs" />
-    <Compile Include="Migrations\201410150455512_Initial.Designer.cs">
-      <DependentUpon>201410150455512_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Migrations\201410151545233_Initial.cs" />
+    <Compile Include="Migrations\201410151545233_Initial.Designer.cs">
+      <DependentUpon>201410151545233_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +75,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410150455512_Initial.resx">
-      <DependentUpon>201410150455512_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201410151545233_Initial.resx">
+      <DependentUpon>201410151545233_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

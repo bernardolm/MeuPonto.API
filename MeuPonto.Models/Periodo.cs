@@ -6,6 +6,8 @@ namespace MeuPonto.Models
 {
 	public class Periodo
 	{
+		public int Id { get; set; }
+
 		[Display(Name = "Início do período")]
 		public DateTime Inicio { get; set; }
 

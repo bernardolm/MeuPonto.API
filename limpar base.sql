@@ -1,15 +1,9 @@
-USE [MeuPonto]
-GO
+DROP TABLE DiasTrabalhoPeriodo;
 
-/****** Object:  Table [dbo].[DiasTrabalho]    Script Date: 29/01/2014 19:48:58 ******/
-DROP TABLE [dbo].[DiasTrabalho]
-GO
+DROP TABLE Periodos;
 
+DROP TABLE DiasTrabalho;
 
-USE [MeuPonto]
-GO
+DROP TABLE __MigrationHistory;
 
-/****** Object:  Table [dbo].[__MigrationHistory]    Script Date: 29/01/2014 19:49:02 ******/
-DROP TABLE [dbo].[__MigrationHistory]
-GO
-
+COMMIT;

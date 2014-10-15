@@ -1,5 +1,4 @@
-﻿using MeuPonto.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MeuPonto.Models
@@ -50,15 +49,17 @@ namespace MeuPonto.Models
 			}
 		}
 
-		public static Periodo PeriodoMock
+		public static List<Periodo> PeriodosMock
 		{
 			get
 			{
-				return new Periodo
+				return new List<Periodo>
 				{
-					Inicio = new DateTime(ano, mes, dia, 0, 0, 0),
-					Fim = new DateTime(ano, mes, dia+5, 0, 0, 0),
-					Dias = DiasTrabalhoMock
+					new Periodo {
+						Inicio = new DateTime(ano, mes, dia, 0, 0, 0),
+						Fim = new DateTime(ano, mes, dia+5, 0, 0, 0),
+						Dias = DiasTrabalhoMock
+					}
 				};
 			}
 		}

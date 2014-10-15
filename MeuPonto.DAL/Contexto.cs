@@ -1,9 +1,11 @@
 ﻿using MeuPonto.Models;
+using MySql.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace MeuPonto.DAL
 {
+	[DbConfigurationType(typeof(MySqlEFConfiguration))]
 	public class Contexto : DbContext
 	{
 		public Contexto() : base("MeuPontoDB") { }
@@ -12,6 +14,8 @@ namespace MeuPonto.DAL
 		
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
+			modelBuilder.Conventions.Remove();
+
 			modelBuilder.Entity<DiaTrabalho>()
 				.HasKey(c => c.Id)
 				.Property(c => c.Id)
@@ -22,32 +26,32 @@ namespace MeuPonto.DAL
 			
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.Entrada)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsRequired();
 
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.IntervaloSaida)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsOptional(); 
 			
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.IntervaloRetorno)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsOptional();
 
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.IntervaloExtraSaida)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsOptional();
 	
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.IntervaloExtraRetorno)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsOptional();
 
 			modelBuilder.Entity<DiaTrabalho>()
 				.Property(c => c.Saida)
-				.HasColumnType("DateTime2")
+				.HasColumnType("DateTime")
 				.IsRequired();
 
 			modelBuilder.Entity<DiaTrabalho>()

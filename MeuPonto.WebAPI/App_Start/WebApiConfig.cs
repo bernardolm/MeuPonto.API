@@ -9,6 +9,9 @@ namespace MeuPonto.WebAPI
 	{
 		public static void Register(HttpConfiguration config)
 		{
+			// Web API Cross-Domain resource enabled
+			config.EnableCors();
+
 			// Web API configuration and services
 			config.Formatters.Add(new BrowserJsonFormatter());
 

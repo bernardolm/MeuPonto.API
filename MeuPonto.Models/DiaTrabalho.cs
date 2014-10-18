@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MeuPonto.Models
 {
 	public class DiaTrabalho
 	{
+		[JsonIgnore]
 		private readonly TimeSpan HorasATrabalharEmUmDia = new TimeSpan(8, 0, 0);
 		
 		public int Id { get; set; }
@@ -35,6 +37,7 @@ namespace MeuPonto.Models
 		[Display(Name = "Observação")]
 		public String Observacao { get; set; }
 
+		[JsonIgnore]
 		[DisplayFormat(DataFormatString = "{0:HH:mm}")]
 		[Display(Name = "Limite diurno")]
 		public DateTime LimiteDiurno
@@ -48,6 +51,7 @@ namespace MeuPonto.Models
 			}
 		}
 
+		[JsonIgnore]
 		[DisplayFormat(DataFormatString = "{0:HH:mm}")]
 		[Display(Name = "Limite noturno")]
 		public DateTime LimiteNoturno

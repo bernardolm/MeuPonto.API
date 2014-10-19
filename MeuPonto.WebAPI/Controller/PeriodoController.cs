@@ -23,11 +23,28 @@ namespace MeuPonto.WebAPI.Controller
             return db.Periodos.Include(p => p.Dias);
         }
 
-        // GET: api/Periodos/5
+		// GET: api/Periodos/lastest
+		[ResponseType(typeof(Periodo))]
+		[Route("~/api/Periodos/lastest")]
+		public IHttpActionResult GetLastestPeriodo()
+		{
+			Periodo periodo = db.Periodos.Include(p => p.Dias).OrderByDescending(p => p.Id).SingleOrDefault();
+			periodo.Dias = periodo.Dias.OrderBy(q => q.Entrada).ToList();
+			if (periodo == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(periodo);
+		}
+		
+		// GET: api/Periodos/5
         [ResponseType(typeof(Periodo))]
         public IHttpActionResult GetPeriodo(int id)
         {
-            Periodo periodo = db.Periodos.Find(id);
+            //Periodo periodo = db.Periodos.Find(id);
+			Periodo periodo = db.Periodos.Include(p => p.Dias).SingleOrDefault(p => p.Id == id);
+			periodo.Dias = periodo.Dias.OrderBy(q => q.Entrada).ToList();
             if (periodo == null)
             {
                 return NotFound();

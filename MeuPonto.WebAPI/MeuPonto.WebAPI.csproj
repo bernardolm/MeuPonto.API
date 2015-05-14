@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1AF7813B-E7D6-4F89-B267-19CE1CB2A241}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -115,11 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeuPonto.DAL\MeuPonto.DAL.csproj">
-      <Project>{9e5eeb82-0f90-42dd-80c0-8a6b67731065}</Project>
+      <Project>{9E5EEB82-0F90-42DD-80C0-8A6B67731065}</Project>
       <Name>MeuPonto.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\MeuPonto.Models\MeuPonto.Models.csproj">
-      <Project>{5cb9d0cc-758a-43f0-a855-e85a91bec636}</Project>
+      <Project>{5CB9D0CC-758A-43F0-A855-E85A91BEC636}</Project>
       <Name>MeuPonto.Models</Name>
     </ProjectReference>
   </ItemGroup>
@@ -153,6 +150,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

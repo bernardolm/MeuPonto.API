@@ -1,3 +1,13 @@
+#User Specific
+*.userprefs
+*.usertasks
+
+#Mono Project Files
+*.pidb
+*.resources
+test-results/
+
+ConnectionString.config
 
 .DS_Store
 *.bak

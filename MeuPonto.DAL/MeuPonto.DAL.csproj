@@ -63,6 +63,7 @@
       <DependentUpon>201410151545233_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MySqlHistoryContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MeuPonto.Models\MeuPonto.Models.csproj">

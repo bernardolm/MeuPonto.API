@@ -8,8 +8,9 @@ namespace MeuPonto.DAL
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
 			SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());
+			SetHistoryContextFactory("MySql.Data.MySqlClient", (conn, schema) => new MySqlHistoryContext(conn, schema));
         }
 
         protected override void Seed(Contexto context)

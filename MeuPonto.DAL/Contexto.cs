@@ -9,7 +9,7 @@ namespace MeuPonto.DAL
 	[DbConfigurationType(typeof(MySqlEFConfiguration))]
 	public class Contexto : DbContext
 	{
-		public Contexto() : base("MeuPontoDB") {
+		public Contexto() : base("name=MeuPontoDB") {
 			Database.SetInitializer<Contexto>(new DropCreateDatabaseIfModelChanges<Contexto>());
 		}
  

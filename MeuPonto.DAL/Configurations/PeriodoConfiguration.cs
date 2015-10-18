@@ -8,17 +8,26 @@ namespace MeuPonto.DAL.Configurations
 	{
 		public PeriodoConfiguration()
         {
-			ToTable("Periodos");
+			ToTable("periodo");
             HasKey(c => c.Id);
-			Property(c => c.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-			Property(c => c.Inicio).HasColumnType("DateTime").IsOptional();
-			Property(c => c.Fim).HasColumnType("DateTime").IsOptional();
-			HasMany(c => c.Dias).WithMany()
+			Property(c => c.Id)
+				.HasColumnName("periodo_id")
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+			Property(c => c.Inicio)
+				.HasColumnName("inicio")
+				.HasColumnType("DateTime")
+				.IsOptional();
+			Property(c => c.Fim)
+				.HasColumnName("fim")
+				.HasColumnType("DateTime")
+				.IsOptional();
+			HasMany(c => c.Dias)
+				.WithMany()
 				.Map(m =>
 				{
-					m.MapLeftKey("PeriodoId");
-					m.MapRightKey("DiasTrabalhoId");
-					m.ToTable("DiasTrabalhoPeriodo");
+					m.MapLeftKey("periodo_id");
+					m.MapRightKey("dia_trabalho_id");
+					m.ToTable("dias_trabalho_periodo");
 				});
         }
 	}

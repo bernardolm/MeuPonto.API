@@ -8,7 +8,7 @@ namespace MeuPonto.DAL
         public override void Up()
         {
             CreateTable(
-                "dbo.DiasTrabalho",
+                "dbo.dia_trabalho",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -23,7 +23,7 @@ namespace MeuPonto.DAL
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Periodos",
+                "dbo.periodo",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -33,15 +33,15 @@ namespace MeuPonto.DAL
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.DiasTrabalhoPeriodo",
+                "dbo.dia_trabalho_periodo",
                 c => new
                     {
                         PeriodoId = c.Int(nullable: false),
                         DiasTrabalhoId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.PeriodoId, t.DiasTrabalhoId })
-                .ForeignKey("dbo.Periodos", t => t.PeriodoId, cascadeDelete: true)
-                .ForeignKey("dbo.DiasTrabalho", t => t.DiasTrabalhoId, cascadeDelete: true)
+                .ForeignKey("dbo.periodo", t => t.PeriodoId, cascadeDelete: true)
+				.ForeignKey("dbo.dia_trabalho", t => t.DiasTrabalhoId, cascadeDelete: true)
                 .Index(t => t.PeriodoId)
                 .Index(t => t.DiasTrabalhoId);
             
@@ -49,13 +49,13 @@ namespace MeuPonto.DAL
         
         public override void Down()
         {
-            DropForeignKey("dbo.DiasTrabalhoPeriodo", "DiasTrabalhoId", "dbo.DiasTrabalho");
-            DropForeignKey("dbo.DiasTrabalhoPeriodo", "PeriodoId", "dbo.Periodos");
-            DropIndex("dbo.DiasTrabalhoPeriodo", new[] { "DiasTrabalhoId" });
-            DropIndex("dbo.DiasTrabalhoPeriodo", new[] { "PeriodoId" });
-            DropTable("dbo.DiasTrabalhoPeriodo");
-            DropTable("dbo.Periodos");
-            DropTable("dbo.DiasTrabalho");
+            DropForeignKey("dbo.dia_trabalho_periodo", "dia_trabalho_id", "dbo.dia_trabalho");
+            DropForeignKey("dbo.dia_trabalho_periodo", "periodo_id", "dbo.periodo");
+            DropIndex("dbo.dia_trabalho_periodo", new[] { "dia_trabalho_id" });
+            DropIndex("dbo.dia_trabalho_periodo", new[] { "periodo_id" });
+            DropTable("dbo.dia_trabalho_periodo");
+            DropTable("dbo.periodo");
+            DropTable("dbo.dia_trabalho");
         }
     }
 }

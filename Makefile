@@ -4,3 +4,4 @@ build:
 
 run: build
 	docker run -p 4321:4321 -t bernardolm/meuponto-api-csharp
+

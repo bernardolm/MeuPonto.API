@@ -26,12 +26,12 @@
 
 ####################################################
 
-FROM mono
-WORKDIR /app
+#FROM mono
+#WORKDIR /app
 
 # Instalar a feature do IIS
-RUN Add-WindowsFeature Web-server, NET-Framework-45-ASPNET, Web-Asp-Net45
-RUN Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment,IIS-ASPNET45,IIS-BasicAuthentication...
+#RUN Add-WindowsFeature Web-server, NET-Framework-45-ASPNET, Web-Asp-Net45
+#RUN Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment,IIS-ASPNET45,IIS-BasicAuthentication...
 
 # Adicionar o site mvc no IIS
 #COPY aspnet-mvc /websites/aspnet-mvc
@@ -39,7 +39,21 @@ RUN Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopmen
 #EXPOSE 8081
 
 # Adicionar o site webapi no IIS
-COPY aspnet-webapi /websites/aspnet-webapi
-RUN New-Website -Name 'aspnet-webapi' -PhysicalPath "C:\websites\aspnet-webapi" -Port 8082 -Force
-EXPOSE 8082
+#COPY aspnet-webapi /websites/aspnet-webapi
+#RUN New-Website -Name 'aspnet-webapi' -PhysicalPath "C:\websites\aspnet-webapi" -Port 8082 -Force
+#EXPOSE 8082
 
+#CMD [ "mono",  "./TestingConsoleApp.exe" ]
+#CMD [ "mono", "./cscs.exe", "-v" ]
+#CMD [ "mono ./cscs.exe", "-v" ]
+#CMD [ "mono", "./cscs.exe", "-s", ">", "hello.cs" ]
+
+####################################################
+
+FROM ocelotuproar/docker-alpine-scriptcs:0.16.1
+WORKDIR /app
+COPY server.csx ./
+
+#CMD [ "scriptcs", "--version" ]
+
+#CMD [ "scriptcs", "server.csx" ]
